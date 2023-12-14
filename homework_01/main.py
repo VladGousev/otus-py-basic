@@ -3,7 +3,20 @@
 Функции и структуры данных
 """
 from typing import List
-import sympy
+
+
+def is_prime(num: int) -> bool:
+    if num < 2:
+        return False
+    elif num in {2, 3}:
+        return True
+    elif num % 2 == 0:
+        return False
+    else:
+        for i in range(3, int(num ** 0.5) + 1, 2):
+            if num % i == 0:
+                return False
+        return True
 
 
 def power_numbers(*args) -> List[int]:
@@ -38,7 +51,7 @@ def filter_numbers(num_list: List[int], filter_name: str) -> List[int]:
     elif filter_name == EVEN:
         return list(filter(lambda x: x % 2 == 0, num_list))
     elif filter_name == PRIME:
-        return list(filter(lambda x: sympy.isprime(x), num_list))
+        return list(filter(lambda x: is_prime(x), num_list))
     else:
         print("Wrong filter name!")
         return []
