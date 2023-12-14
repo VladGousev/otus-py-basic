@@ -1,4 +1,5 @@
 # Python Developer. Basic | OTUS
-## Student: Vlad Gusev
+## Homeworks
+## Student: _Vlad Gusev_
 
 ---
