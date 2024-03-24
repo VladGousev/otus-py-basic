@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, render_template
 
 about_app = Blueprint(
     "about_app",
@@ -9,4 +9,4 @@ about_app = Blueprint(
 
 @about_app.get("/")
 def about_view():
-    return "Homework #5 from OTUS PythonBasic"
+    return render_template("about.html")
