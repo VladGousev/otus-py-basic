@@ -18,7 +18,7 @@ app = Flask(__name__)
 app.register_blueprint(about_app)
 
 
-@app.get("/")
+@app.get("/", endpoint="index")
 def index():
     return render_template("index.html")
 

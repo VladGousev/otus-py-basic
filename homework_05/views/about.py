@@ -7,6 +7,6 @@ about_app = Blueprint(
 )
 
 
-@about_app.get("/")
+@about_app.get("/", endpoint="about")
 def about_view():
     return render_template("about.html")
