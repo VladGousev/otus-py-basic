@@ -12,17 +12,15 @@
 """
 from flask import Flask
 
+from homework_05.views.about import about_app
+
 app = Flask(__name__)
+app.register_blueprint(about_app)
 
 
 @app.get("/")
 def index():
     return "Hello, World!"
-
-
-@app.get("/about/")
-def about():
-    return "Homework #5 from OTUS PythonBasic"
 
 
 if __name__ == "__main__":
