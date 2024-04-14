@@ -14,6 +14,8 @@ exceptiongroup==1.2.0
 Faker==13.15.0
 fastapi==0.109.0
 Flask==3.0.2
+Flask-Migrate==4.0.7
+Flask-SQLAlchemy==3.1.1
 frozenlist==1.4.1
 greenlet==3.0.3
 h11==0.14.0
@@ -25,6 +27,7 @@ MarkupSafe==2.1.5
 multidict==6.0.5
 packaging==23.2
 pluggy==1.4.0
+psycopg==3.1.18
 psycopg-binary==3.1.18
 psycopg-pool==3.2.1
 pydantic==2.6.0

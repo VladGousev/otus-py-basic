@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_DB: hw_06
+      POSTGRES_USER: otus_user
+      POSTGRES_PASSWORD: otus_pass
+    ports:
+      - "5432:5432"
