@@ -22,5 +22,11 @@
   {% else %}
     <h2>No users yet!</h2>
   {% endif %}
+  <div>
+    <a
+      class="green"
+      href="{{ url_for('users_app.add') }}"
+    >Add a new user</a>
+  </div>
 
 {% endblock %}

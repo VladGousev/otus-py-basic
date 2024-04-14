@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Delete user #{{ user.id }}
+{% endblock %}
+
+{% block body %}
+  <h1>
+    Are you sure you want to delete
+    user #{{ user.id }}
+    with name <code>{{ user.name }}</code></h1>
+
+  <form method="post" action="{{ url_for('users_app.delete', user_id=user.id) }}">
+
+    <a
+      class="btn btn-info text-light"
+      href="{{ url_for('users_app.details', user_id=user.id) }}"
+    >Back to details</a>
+
+    <input
+      class="btn btn-danger"
+      type="submit"
+      value="Confirm delete"
+    >
+  </form>
+{% endblock %}

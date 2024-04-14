@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  User #{{ user.id }}
+{% endblock %}
+
+{% block body %}
+  <h1>User #{{ user.id }} {{ user.name }} details</h1>
+    <span
+      class="d-inline-block"
+      tabindex="0"
+      data-bs-toggle="tooltip"
+      data-bs-title="Update feature is not ready yet"
+    >
+    <a
+      class="btn btn-outline-success disabled"
+      href="#"
+    >Update</a>
+    </span>
+    <a
+      class="btn btn-outline-danger"
+      href="{{ url_for('users_app.delete', user_id=user.id) }}"
+    >Delete</a>
+  {% include 'users/back-to-users-list.html' %}
+{% endblock %}
