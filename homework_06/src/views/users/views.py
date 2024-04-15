@@ -31,35 +31,53 @@ def create_user():
     if request.method == "GET":
         return render_template("users/add.html")
 
-    user_name = request.form.get("user-name", "")
-    user_name = user_name.strip()
+    user_name = request.form.get("user-name", "").strip()
     if not user_name:
         raise BadRequest("user-name is required!")
+    user_username = request.form.get("user-username", "").strip()
+    if not user_username:
+        raise BadRequest("user-username is required!")
+    user_email = request.form.get("user-email", "").strip()
 
     user = crud.create_user(
         name=user_name,
+        username=user_username,
+        email=user_email,
     )
 
     url = url_for(
-        "users_app.details",
-        user_id=user.id,
+        "users_app.list",
     )
     return redirect(url)
 
 
-@users_app.get(
+@users_app.route(
     "/<int:user_id>/",
     endpoint="detail",
+    methods=["GET", "POST"],
 )
 def get_user_detail(user_id: int):
     user: User = User.query.get_or_404(
         user_id,
         description=f"User #{user_id} not found!",
     )
-    return render_template(
-        "users/detail.html",
-        user=user,
-    )
+    if request.method == "GET":
+        return render_template(
+            "users/detail.html",
+            user=user,
+        )
+    User.name = request.form.get("user-name", "").strip()
+    if not User.name:
+        raise BadRequest("user-name is required!")
+    User.username = request.form.get("user-username", "").strip()
+    if not User.username:
+        raise BadRequest("user-username is required!")
+    User.email = request.form.get("user-email", "").strip()
+
+    crud.update_user(user)
+
+    url = url_for("users_app.list")
+    return redirect(url)
 
 
 @users_app.route(

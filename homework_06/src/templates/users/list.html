@@ -15,7 +15,7 @@
           list-group-item-action
           list-group-item-light
         "
-          href="{{ url_for('users_app.details', user_id=u.id) }}"
+          href="{{ url_for('users_app.detail', user_id=u.id) }}"
         >{{ u.name }}</a>
       {% endfor %}
     </div>

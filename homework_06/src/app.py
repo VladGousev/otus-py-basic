@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, url_for, redirect
 from flask_migrate import Migrate
 
 import config
@@ -19,6 +19,13 @@ app.register_blueprint(
 
 db.init_app(app)
 migrate = Migrate(app, db)
+
+
+@app.get("/", endpoint="index")
+def index():
+    url = url_for("users_app.list")
+    return redirect(url)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
