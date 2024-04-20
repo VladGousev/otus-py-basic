@@ -66,13 +66,14 @@ def get_user_detail(user_id: int):
             "users/detail.html",
             user=user,
         )
-    User.name = request.form.get("user-name", "").strip()
-    if not User.name:
+    user.name = request.form.get("user-name", "").strip()
+    if not user.name:
         raise BadRequest("user-name is required!")
-    User.username = request.form.get("user-username", "").strip()
-    if not User.username:
+    user.username = request.form.get("user-username", "").strip()
+    print(user.username)
+    if not user.username:
         raise BadRequest("user-username is required!")
-    User.email = request.form.get("user-email", "").strip()
+    user.email = request.form.get("user-email", "").strip()
 
     crud.update_user(user)
 
