@@ -21,6 +21,7 @@ import main.views
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("", main.views.index, name="index"),
     path(
         "engineers/", main.views.EngineersListView.as_view(), name="engineers"
     ),
