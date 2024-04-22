@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_DB: hw_06
+      POSTGRES_USER: otus_user
+      POSTGRES_PASSWORD: otus_pass
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d hw_06 -U otus_user" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  app:
+    build:
+      dockerfile: ./build/Dockerfile
+      context: ./
+    environment:
+      SQLALCHEMY_DATABASE_URI: "postgresql+psycopg://otus_user:otus_pass@pg:5432/hw_06"
+    entrypoint:
+      - bash
+      - "entrypoint.sh"
+    command:
+      - gunicorn
+      - "-w 4"
+      - "-b 0.0.0.0:5000"
+      - "app:app"
+    ports:
+      - "5000:5000"
+    depends_on:
+      pg:
+        condition: service_healthy
+
+volumes:
+  db-data:

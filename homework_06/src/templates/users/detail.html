@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+User #{{ user.id }}
+{% endblock %}
+
+{% block body %}
+<h1>User #{{ user.id }} {{ user.name }} details</h1>
+<form method="post">
+    <div class="mb-3">
+        <label
+                for="user-name-id"
+                class="form-label"
+        >Name</label>
+        <input
+                type="text"
+                maxlength="32"
+                class="form-control"
+                id="user-name-id"
+                name="user-name"
+                value="{{ user.name }}"
+                required
+        >
+        <label
+                for="user-username-id"
+                class="form-label"
+        >Username</label>
+        <input
+                type="text"
+                maxlength="32"
+                class="form-control"
+                id="user-username-id"
+                name="user-username"
+                value="{{ user.username }}"
+                required
+        >
+        <label
+                for="user-email-id"
+                class="form-label"
+        >User name</label>
+        <input
+                type="text"
+                maxlength="32"
+                class="form-control"
+                id="user-email-id"
+                name="user-email"
+                value="{{ user.email }}"
+        >
+    </div>
+    <button
+            class="btn btn-outline-success"
+            type="submit"
+    >Update</button>
+    <a
+            class="btn btn-outline-danger"
+            href="{{ url_for('users_app.delete', user_id=user.id) }}"
+    >Delete</a>
+</form>
+
+{% include 'users/back-to-list.html' %}
+{% endblock %}

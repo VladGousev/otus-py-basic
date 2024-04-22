@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Create user
+{% endblock %}
+
+{% block body %}
+<h1>Create a new user</h1>
+
+<form method="post">
+    <div class="mb-3">
+        <label
+                for="user-name-id"
+                class="form-label"
+        >Name</label>
+        <input
+                type="text"
+                maxlength="32"
+                class="form-control"
+                id="user-name-id"
+                name="user-name"
+                placeholder="John Doe"
+                required
+        >
+        <label
+                for="user-username-id"
+                class="form-label"
+        >Username</label>
+        <input
+                type="text"
+                maxlength="32"
+                class="form-control"
+                id="user-username-id"
+                name="user-username"
+                placeholder="john_doe"
+                required
+        >
+        <label
+                for="user-email-id"
+                class="form-label"
+        >User name</label>
+        <input
+                type="text"
+                maxlength="32"
+                class="form-control"
+                id="user-email-id"
+                name="user-email"
+                placeholder="john_doe@company.com"
+        >
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary">Add</button>
+</form>
+{% include 'users/back-to-list.html' %}
+
+{% endblock %}
