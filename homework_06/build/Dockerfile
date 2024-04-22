@@ -6,4 +6,3 @@ COPY ./build/entrypoint.sh ./
 RUN chmod +x entrypoint.sh
 RUN python -m pip install --upgrade pip
 RUN pip install -r requirements.txt
-CMD ["flask", "run"]
